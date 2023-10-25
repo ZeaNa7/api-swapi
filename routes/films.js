@@ -2,10 +2,10 @@ const { listAllFilms, createNewFilm, getFilm, updateFilm, deleteFilm } = require
 const express = require("express");
 const router = express.Router();
 
-router.get("/films", listAllFilms);
-router.post("/films", createNewFilm);
-router.get("/films/:filmid", getFilm);
-router.put("/films/:filmid", updateFilm);
-router.delete("/films/:filmid", deleteFilm);
+router.get("/", listAllFilms);
+router.post("/", createNewFilm);
+router.get("/:filmid", getFilm);
+router.put("/:filmid", updateFilm);
+router.delete("/:filmid", deleteFilm);
 
 module.exports = router;
