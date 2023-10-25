@@ -1,4 +1,3 @@
-const films = require('../models/films');
 const Films = require('../models/films');
 
 exports.listAllFilms = (req, res) => {
@@ -13,13 +12,14 @@ exports.listAllFilms = (req, res) => {
 };
 
 exports.createNewFilm = (req, res) => {
-  let newFilm = new Films(req.body);
-  newFilm.save((err, film) => {
-    if (err) {
-      res.status(500).send(err);
+  Films.insertMany(req.body).then((film) => {
+    res.status(200).json(film);
     }
-    res.status(201).json(film);
-  });
+    ).catch((err) => {
+        res.status(500).json({
+            error: err
+        });
+    })
 };
 
 exports.getFilm = (req, res) => {
