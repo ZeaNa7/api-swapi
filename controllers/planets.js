@@ -22,17 +22,21 @@ export function getPlanetById(req, res) {
 }
 
 export function createPlanet(req, res) {
-    planets.insertMany(req.body).then((planet) => {
-      res.status(200).json(planet);
+    let pk;
+    planets.find().sort({ pk: -1 }).limit(1).then((film) => {
+    pk = film[0].pk + 1;
+    req.body.pk = pk;
+    planets.insertMany(req.body).then((film) => {
+      res.status(200).json(film);
       }
       ).catch((err) => {
           res.status(500).json({
               error: err
           });
       })
+  })
   }
-  
-  
+
   export function   updatePlanet(req, res) {
     planets.findOneAndUpdate(
       { _id: req.params.planetid },

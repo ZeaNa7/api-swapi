@@ -28,6 +28,11 @@ app.use('/api/species', speciesRoutes);
 app.use('/api/starships', starshipsRoutes);
 app.use('/api/vehicles', vehiclesRoutes);
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
+// Setting up database connection
+const DATABASE_URL = 'mongodb+srv://starwars:yY0t3cQ6odtY8Ncs@starstar.1uealmw.mongodb.net/starwars?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 16743;
 
 connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })

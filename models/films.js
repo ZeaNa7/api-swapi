@@ -25,6 +25,21 @@ const FilmsSchema = new Schema({
       "release_date": {
         type: Date
       },
+      "characters": {
+        type: Array
+      },
+      "planets": {
+        type: Array
+      },
+      "starships": {
+        type: Array
+      },
+      "vehicles": {
+        type: Array
+      },
+      "species": {
+        type: Array
+      },
     }
 })
 
