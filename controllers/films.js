@@ -1,7 +1,7 @@
-const Films = require('../models/films');
+import films from '../models/films.js';
 
-exports.listAllFilms = (req, res) => {
-  Films.aggregate([
+export function listAllFilms(req, res) {
+  films.aggregate([
     {
       $lookup: {
       from: 'peoples',
@@ -67,10 +67,10 @@ exports.listAllFilms = (req, res) => {
           error: err
       });
   })
-};
+}
 
-exports.createNewFilm = (req, res) => {
-  Films.insertMany(req.body).then((film) => {
+export function createFilm(req, res) {
+  films.insertMany(req.body).then((film) => {
     res.status(200).json(film);
     }
     ).catch((err) => {
@@ -78,34 +78,35 @@ exports.createNewFilm = (req, res) => {
             error: err
         });
     })
-};
+}
 
-exports.getFilm = (req, res) => {
-  Films.find().where('pk').equals(req.params.filmid).then((film) => {
+export function getFilmById(req, res) {
+  films.find().where('pk').equals(req.params.filmid).then((film) => {
     res.status(200).json(film);
     }).catch((err) => {
         res.status(500).json({
             error: err
         });
     })
-};
+}
 
-exports.updateFilm = (req, res) => {
-  Films.findOneAndUpdate(
-    { _id: req.params.filmid },
+export function updateFilm(req, res) {
+  films.findOneAndUpdate(
+    { id: req.params.filmid },
     req.body,
-    { new: true, useFindAndModify: false },
-    (err, film) => {
-      if (err) {
-        res.status(500).send(err);
-      }
+    { new: true, useFindAndModify: false }
+  )
+    .then((film) => {
       res.status(200).json(film);
-    }
-  );
-};
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+}
 
-exports.deleteFilm = (req, res) => {
-  Films.deleteOne({ pk: req.params.filmid }).then((film) => {
+
+export function deleteFilm(req, res) {
+  films.deleteOne({ pk: req.params.filmid }).then((film) => {
     res.status(200).json({ message: 'Film successfully deleted' });
     }).catch((err) => {
         res.status(500).json({
@@ -113,4 +114,4 @@ exports.deleteFilm = (req, res) => {
         });
     }
     );
-};
+}

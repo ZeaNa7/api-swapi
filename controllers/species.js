@@ -1,7 +1,7 @@
-const Species = require('../models/species')
+import species from '../models/species.js';
 
-exports.getSpecies = (req, res) => {
-    Species.aggregate([
+export function getSpecies(req, res) {
+    species.aggregate([
         {
         $lookup: {
         from: 'peoples',
@@ -28,20 +28,20 @@ exports.getSpecies = (req, res) => {
             error: err
         });
     })
-};
+}
 
-exports.getSpeciesById = (req, res) => {
-    Species.find().where('pk').equals(req.params.speciesid).then((specie) => {
+export function getSpeciesById(req, res) {
+    find().where('pk').equals(req.params.speciesid).then((specie) => {
     res.status(200).json(specie);
     }).catch((err) => {
         res.status(500).json({
             error: err
         });
     })
-};
+}
 
-exports.createSpecies = (req, res) => {
-    Species.insertMany(req.body).then((specie) => {
+export function createSpecies(req, res) {
+    species.insertMany(req.body).then((specie) => {
       res.status(200).json(specie);
       }
       ).catch((err) => {
@@ -49,11 +49,11 @@ exports.createSpecies = (req, res) => {
               error: err
           });
       })
-  };
+  }
   
   
-  exports.updateSpecies = (req, res) => {
-    Species.findOneAndUpdate(
+  export function   updateSpecies(req, res) {
+    species.findOneAndUpdate(
       { _id: req.params.speciesid },
       req.body,
       { new: true, useFindAndModify: false },
@@ -64,10 +64,10 @@ exports.createSpecies = (req, res) => {
         res.status(200).json(specie);
       }
     );
-  };
+  }
   
-  exports.deleteSpecies = (req, res) => {
-    Species.deleteOne({ pk: req.params.speciesid }).then((specie) => {
+  export function   deleteSpecies(req, res) {
+    species.deleteOne({ pk: req.params.speciesid }).then((specie) => {
       res.status(200).json({ message: 'People successfully deleted' });
       }).catch((err) => {
           res.status(500).json({
@@ -75,5 +75,5 @@ exports.createSpecies = (req, res) => {
           });
       }
       );
-  };
+  }
   

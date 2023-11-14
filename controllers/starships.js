@@ -1,0 +1,60 @@
+import starships from '../models/starships.js';
+
+export function getStarships(req, res) {
+    starships.find().then((starship) => {
+        res.status(200).json(starship);
+    }
+    ).catch((err) => {
+        res.status(500).json({
+            error: err
+        });
+    })
+}
+
+export function getStarshipById(req, res) {
+    starships.find().where('pk').equals(req.params.starshipid).then((starship) => {
+    res.status(200).json(starship);
+    }).catch((err) => {
+        res.status(500).json({
+            error: err
+        });
+    })
+}
+
+export function createStarship(req, res) {
+    starships.insertMany(req.body).then((starship) => {
+      res.status(200).json(starship);
+      }
+      ).catch((err) => {
+          res.status(500).json({
+              error: err
+          });
+      })
+  }
+  
+  
+  export function   updateStarship(req, res) {
+    starships.findOneAndUpdate(
+      { _id: req.params.starshipid },
+      req.body,
+      { new: true, useFindAndModify: false },
+      (err, starship) => {
+        if (err) {
+          res.status(500).send(err);
+        }
+        res.status(200).json(starship);
+      }
+    );
+  }
+  
+  export function   deleteStarship(req, res) {
+    starships.deleteOne({ pk: req.params.starshipid }).then((starship) => {
+      res.status(200).json({ message: 'Starship successfully deleted' });
+      }).catch((err) => {
+          res.status(500).json({
+              error: err
+          });
+      }
+      );
+  }
+  

@@ -1,7 +1,7 @@
-const Planet = require('../models/planets')
+import planets from '../models/planets.js';
 
-exports.getPlanets = (req, res) => {
-    Planet.find().then((planet) => {
+export function getPlanets(req, res) {
+    planets.find().then((planet) => {
         res.status(200).json(planet);
     }
     ).catch((err) => {
@@ -9,20 +9,20 @@ exports.getPlanets = (req, res) => {
             error: err
         });
     })
-};
+}
 
-exports.getPlanetById = (req, res) => {
-    Planet.find().where('pk').equals(req.params.planetid).then((planet) => {
+export function getPlanetById(req, res) {
+    planets.find().where('pk').equals(req.params.planetid).then((planet) => {
     res.status(200).json(planet);
     }).catch((err) => {
         res.status(500).json({
             error: err
         });
     })
-};
+}
 
-exports.createPlanet = (req, res) => {
-    Planet.insertMany(req.body).then((planet) => {
+export function createPlanet(req, res) {
+    planets.insertMany(req.body).then((planet) => {
       res.status(200).json(planet);
       }
       ).catch((err) => {
@@ -30,11 +30,11 @@ exports.createPlanet = (req, res) => {
               error: err
           });
       })
-  };
+  }
   
   
-  exports.updatePlanet = (req, res) => {
-    Planet.findOneAndUpdate(
+  export function   updatePlanet(req, res) {
+    planets.findOneAndUpdate(
       { _id: req.params.planetid },
       req.body,
       { new: true, useFindAndModify: false },
@@ -45,10 +45,10 @@ exports.createPlanet = (req, res) => {
         res.status(200).json(planet);
       }
     );
-  };
+  }
   
-  exports.deletePlanet = (req, res) => {
-    Planet.deleteOne({ pk: req.params.planetid }).then((planet) => {
+  export function   deletePlanet(req, res) {
+    planets.deleteOne({ pk: req.params.planetid }).then((planet) => {
       res.status(200).json({ message: 'People successfully deleted' });
       }).catch((err) => {
           res.status(500).json({
@@ -56,5 +56,5 @@ exports.createPlanet = (req, res) => {
           });
       }
       );
-  };
+  }
   

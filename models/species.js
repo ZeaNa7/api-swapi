@@ -1,6 +1,6 @@
-const mongoose = require( "mongoose");
+import { Schema, model } from "mongoose";
 
-const SpeciesSchema = new mongoose.Schema({
+const SpeciesSchema = new Schema({
     "model": String,
     "pk": Number,
     "field": {
@@ -67,4 +67,4 @@ const SpeciesSchema = new mongoose.Schema({
         },
 })
 
-module.exports = mongoose.model("Species", SpeciesSchema);
+export default model("Species", SpeciesSchema);

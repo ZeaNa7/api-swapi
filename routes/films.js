@@ -1,11 +1,18 @@
-const { listAllFilms, createNewFilm, getFilm, updateFilm, deleteFilm } = require('../controllers/films');
-const express = require("express");
+import express from "express";
+import {
+  listAllFilms,
+  createFilm,
+  getFilmById,
+  updateFilm,
+  deleteFilm,
+} from "../controllers/films.js";
+
 const router = express.Router();
 
 router.get("/", listAllFilms);
-router.post("/", createNewFilm);
-router.get("/:filmid", getFilm);
+router.post("/", createFilm);
+router.get("/:filmid", getFilmById);
 router.put("/:filmid", updateFilm);
 router.delete("/:filmid", deleteFilm);
 
-module.exports = router;
+export default router;

@@ -1,6 +1,6 @@
-const express = require("express");
-const router = express.Router();
-const { getSpecies, getSpeciesById, createSpecies, updateSpecies, deleteSpecies } = require("../controllers/species");
+import { Router } from "express";
+const router = Router();
+import { getSpecies, getSpeciesById, createSpecies, updateSpecies, deleteSpecies } from "../controllers/species.js";
 
 router.get("/", getSpecies);
 router.get("/:speciesid", getSpeciesById);
@@ -8,5 +8,5 @@ router.post("/", createSpecies);
 router.put("/:speciesid", updateSpecies);
 router.delete("/:speciesid", deleteSpecies);
 
-module.exports = router;
+export default router;
 

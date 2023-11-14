@@ -1,7 +1,7 @@
-const People = require('../models/people')
+import people from '../models/people.js';
 
-exports.getPeople = (req, res) => {
-    People.find().then((people) => {
+export function getPeople(req, res) {
+    people.find().then((people) => {
         res.status(200).json(people);
     }
     ).catch((err) => {
@@ -9,20 +9,20 @@ exports.getPeople = (req, res) => {
             error: err
         });
     })
-};
+}
 
-exports.getPeopleById = (req, res) => {
-    People.find().where('pk').equals(req.params.peopleid).then((people) => {
+export function getPeopleById(req, res) {
+    people.find().where('pk').equals(req.params.peopleid).then((people) => {
     res.status(200).json(people);
     }).catch((err) => {
         res.status(500).json({
             error: err
         });
     })
-};
+}
 
-exports.createPeople = (req, res) => {
-    People.insertMany(req.body).then((people) => {
+export function createPeople(req, res) {
+    people.insertMany(req.body).then((people) => {
       res.status(200).json(people);
       }
       ).catch((err) => {
@@ -30,11 +30,11 @@ exports.createPeople = (req, res) => {
               error: err
           });
       })
-  };
+  }
   
   
-  exports.updatePeople = (req, res) => {
-    People.findOneAndUpdate(
+  export function   updatePeople(req, res) {
+    people.findOneAndUpdate(
       { _id: req.params.peopleid },
       req.body,
       { new: true, useFindAndModify: false },
@@ -45,10 +45,10 @@ exports.createPeople = (req, res) => {
         res.status(200).json(people);
       }
     );
-  };
+  }
   
-  exports.deletePeople = (req, res) => {
-    People.deleteOne({ pk: req.params.peopleid }).then((people) => {
+  export function   deletePeople(req, res) {
+    people.deleteOne({ pk: req.params.peopleid }).then((people) => {
       res.status(200).json({ message: 'People successfully deleted' });
       }).catch((err) => {
           res.status(500).json({
@@ -56,5 +56,5 @@ exports.createPeople = (req, res) => {
           });
       }
       );
-  };
+  }
   

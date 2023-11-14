@@ -1,6 +1,6 @@
-const express = require("express");
-const router = express.Router();
-const { getPeople, createPeople, getPeopleById, updatePeople, deletePeople} = require('../controllers/people');
+import { Router } from "express";
+const router = Router();
+import { getPeople, createPeople, getPeopleById, updatePeople, deletePeople } from '../controllers/people.js';
 
 router.get("/", getPeople);
 router.get("/:peopleid", getPeopleById);
@@ -8,5 +8,5 @@ router.post("/", createPeople);
 router.put("/:peopleid", updatePeople);
 router.delete("/:peopleid", deletePeople);
 
-module.exports = router;
+export default router;
 

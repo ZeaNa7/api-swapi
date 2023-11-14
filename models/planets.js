@@ -1,6 +1,6 @@
-const mongoose = require( "mongoose");
+import { Schema, model } from "mongoose";
 
-const PlanetsSchema = new mongoose.Schema({
+const PlanetsSchema = new Schema({
     "model": String,
     "pk": Number,
     "field": {
@@ -63,4 +63,4 @@ const PlanetsSchema = new mongoose.Schema({
         },
 })
 
-module.exports = mongoose.model("Planets", PlanetsSchema);
+export default model("Planets", PlanetsSchema);
