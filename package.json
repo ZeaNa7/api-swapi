@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ZeaNa7/api-swapi#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongodb": "^6.2.0",
     "mongoose": "^7.6.3",
