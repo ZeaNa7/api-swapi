@@ -10,9 +10,22 @@
   "schemes": [
     "http"
   ],
+  "tags": [
+    {
+      "name": "films",
+      "description": "Films API"
+    },
+    {
+      "name": "planets",
+      "description": "Planets API"
+    }
+  ],
   "paths": {
     "/api/films": {
       "get": {
+        "tags": [
+          "films"
+        ],
         "summary": "List all films",
         "responses": {
           "200": {
@@ -21,7 +34,86 @@
         }
       },
       "post": {
+        "tags": [
+          "films"
+        ],
         "summary": "Create new film",
+        "parameters": [
+          {
+            "name": "film",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Film",
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "episode_id": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "opening_crawl": {
+                      "type": "string"
+                    },
+                    "director": {
+                      "type": "string"
+                    },
+                    "producer": {
+                      "type": "string"
+                    },
+                    "release_date": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "characters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "planets": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "starships": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "vehicles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "species": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "created": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "edited": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -31,6 +123,9 @@
     },
     "/api/films/{filmid}": {
       "get": {
+        "tags": [
+          "films"
+        ],
         "summary": "Get film",
         "parameters": [
           {
@@ -47,6 +142,9 @@
         }
       },
       "put": {
+        "tags": [
+          "films"
+        ],
         "summary": "Update film",
         "parameters": [
           {
@@ -54,6 +152,79 @@
             "in": "path",
             "required": true,
             "type": "integer"
+          },
+          {
+          "name": "film",
+          "in": "body",
+          "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "episode_id": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "opening_crawl": {
+                      "type": "string"
+                    },
+                    "director": {
+                      "type": "string"
+                    },
+                    "producer": {
+                      "type": "string"
+                    },
+                    "release_date": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "characters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "planets": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "starships": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "vehicles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "species": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "created": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "edited": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -63,6 +234,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "films"
+        ],
         "summary": "Delete film",
         "parameters": [
           {
@@ -81,6 +255,9 @@
     },
     "/api/planets": {
       "get": {
+        "tags": [
+          "planets"
+        ],
         "summary": "List all planets",
         "responses": {
           "200": {
@@ -89,6 +266,9 @@
         }
       },
       "post": {
+        "tags": [
+          "planets"
+        ],
         "summary": "Create new planet",
         "responses": {
           "200": {
@@ -99,6 +279,9 @@
     },
     "/api/planets/{planetid}": {
       "get": {
+        "tags": [
+          "planets"
+        ],
         "summary": "Get planet",
         "parameters": [
           {
@@ -115,6 +298,9 @@
         }
       },
       "put": {
+        "tags": [
+          "planets"
+        ],
         "summary": "Update planet",
         "parameters": [
           {
@@ -131,6 +317,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "planets"
+        ],
         "summary": "Delete planet",
         "parameters": [
           {
@@ -149,3 +338,4 @@
     }
   }
 }
+
