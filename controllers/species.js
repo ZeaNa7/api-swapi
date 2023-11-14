@@ -1,7 +1,26 @@
 const Species = require('../models/species')
 
 exports.getSpecies = (req, res) => {
-    Species.find().then((specie) => {
+    Species.aggregate([
+        {
+        $lookup: {
+        from: 'peoples',
+        localField: 'fields.people',
+        foreignField: 'pk',
+        as: 'fields.results_people'
+        },
+    },
+    {
+        $set: {
+            'fields.people': '$fields.results_people',
+        }
+    },
+    {
+        $project: {
+            'fields.results_people': 0,
+        }
+    },
+    ]).then((specie) => {
         res.status(200).json(specie);
     }
     ).catch((err) => {
