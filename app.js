@@ -2,9 +2,10 @@
 import { connect } from 'mongoose';
 import express, { json, urlencoded } from 'express';
 import cors from 'cors';
-// Importing routes
-import jwt from 'jsonwebtoken';
+// Importing routes*
 import { config } from 'dotenv';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json' assert { type: "json" };
 config();
 
 import filmsRoutes from './routes/films.js';
@@ -29,10 +30,6 @@ app.use('/api/starships', starshipsRoutes);
 app.use('/api/vehicles', vehiclesRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-
-// Setting up database connection
-const DATABASE_URL = 'mongodb+srv://starwars:yY0t3cQ6odtY8Ncs@starstar.1uealmw.mongodb.net/starwars?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 16743;
 
 connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
