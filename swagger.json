@@ -5,7 +5,7 @@
     "title": "Star Wars API",
     "description": "API for Star Wars films"
   },
-  "host": "localhost:16743",
+  "host": "localhost:3005",
   "basePath": "/",
   "schemes": [
     "http"
@@ -18,6 +18,22 @@
     {
       "name": "planets",
       "description": "Planets API"
+    },
+    {
+      "name": "people",
+      "description": "People API"
+    },
+    {
+      "name": "species",
+      "description": "Species API"
+    },
+    {
+      "name": "vehicles",
+      "description": "Vehicles API"
+    },
+    {
+      "name": "starships",
+      "description": "Starships API"
     }
   ],
   "paths": {
@@ -324,6 +340,255 @@
         "parameters": [
           {
             "name": "planetid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/peoples": {
+      "get": {
+        "tags": [
+          "people"
+        ],
+        "summary": "Get all people",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "people"
+        ],
+        "summary": "Add a new person",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/peoples/{peopleid}": {
+      "get": {
+        "tags": [
+          "people"
+        ],
+        "summary": "Get person",
+        "parameters": [
+          {
+            "name": "peopleid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "people"
+        ],
+        "summary": "Update person",
+        "parameters": [
+          {
+            "name": "peopleid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "people"
+        ],
+        "summary": "Delete person",
+        "parameters": [
+          {
+            "name": "peopleid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/species": {
+      "get": {
+        "tags": [
+          "species"
+        ],
+        "summary": "Get all species",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "species"
+        ],
+        "summary": "Add a new species",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/species/{speciesid}": {
+      "get": {
+        "tags": [
+          "species"
+        ],
+        "summary": "Get species",
+        "parameters": [
+          {
+            "name": "speciesid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "species"
+        ],
+        "summary": "Update species",
+        "parameters": [
+          {
+            "name": "speciesid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "species"
+        ],
+        "summary": "Delete species",
+        "parameters": [
+          {
+            "name": "speciesid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/vehicles": {
+      "get": {
+        "tags": [
+          "vehicles"
+        ],
+        "summary": "Get all vehicles",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "vehicles"
+        ],
+        "summary": "Add a new vehicle",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/vehicles/{vehicleid}": {
+      "get": {
+        "tags": [
+          "vehicles"
+        ],
+        "summary": "Get vehicle",
+        "parameters": [
+          {
+            "name": "vehicleid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "vehicles"
+        ],
+        "summary": "Update vehicle",
+        "parameters": [
+          {
+            "name": "vehicleid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "vehicles"
+        ],
+        "summary": "Delete vehicle",
+        "parameters": [
+          {
+            "name": "vehicleid",
             "in": "path",
             "required": true,
             "type": "integer"

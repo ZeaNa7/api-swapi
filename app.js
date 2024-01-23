@@ -3,7 +3,8 @@ import { connect } from 'mongoose';
 import express, { json, urlencoded } from 'express';
 import cors from 'cors';
 // Importing routes
-import jwt from 'jsonwebtoken';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json' assert { type: "json" };
 import { config } from 'dotenv';
 config();
 
