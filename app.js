@@ -8,6 +8,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json' assert { type: "json" };
 config();
 
+import authRoute from './routes/auth.js';
 import filmsRoutes from './routes/films.js';
 import peopleRoutes from './routes/people.js';
 import planetsRoutes from './routes/planets.js';
@@ -20,8 +21,9 @@ const app = express();
 
 app.use(json());
 app.use(cors());
-app.use(urlencoded({ extended: false }));
+app.use(urlencoded({ extended: true }));
 
+app.use('/api/authenticate', authRoute);
 app.use('/api/films', filmsRoutes);
 app.use('/api/peoples', peopleRoutes);
 app.use('/api/planets', planetsRoutes);
