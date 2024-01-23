@@ -8,7 +8,7 @@ function generateAccessToken(username) {
 
 router.post('/', (req, res) => {
     const token = generateAccessToken({ username: req.body.username });
-    res.json(token);
+    res.json({token: token});
   });
 
 export default router;

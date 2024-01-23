@@ -42,11 +42,11 @@ export function getSpeciesById(req, res) {
 
 export function createSpecies(req, res) {
     let pk;
-    species.find().sort({ pk: -1 }).limit(1).then((film) => {
-    pk = film[0].pk + 1;
+    species.find().sort({ pk: -1 }).limit(1).then((specie) => {
+    pk = specie[0].pk + 1;
     req.body.pk = pk;
-    species.insertMany(req.body).then((film) => {
-      res.status(200).json(film);
+    species.insertMany(req.body).then((specie) => {
+      res.status(200).json(specie);
       }
       ).catch((err) => {
           res.status(500).json({
@@ -70,7 +70,7 @@ export function createSpecies(req, res) {
     );
   }
 
-  export function   deleteSpecies(req, res) {
+  export function deleteSpecies(req, res) {
     species.deleteOne({ pk: req.params.speciesid }).then((specie) => {
       res.status(200).json({ message: 'People successfully deleted' });
       }).catch((err) => {
