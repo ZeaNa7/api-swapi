@@ -2,7 +2,8 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Star Wars API",
-    "description": "This is"
+    "description": "This is",
+    "version": "1.0.0"
   },
   "security": [{
     "apiKey": []
@@ -525,8 +526,22 @@
       }
     }
   }
-}
+},
+"Auth": {
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "description": "The username of the user."
+    },
+    "token": {
+      "type": "string",
+      "description": "The JWT token generated for the user."
+    }
   }
+}
+
+}
 
 
 },
@@ -540,9 +555,11 @@
       "responses": {
         "200": {
           "description": "A list of films",
-          "content":{
-            "schema": {
+          "content": {
+            "application/json": {
+              "schema": {
                 "$ref": "#/components/schemas/Film"
+              }
             }
           }
         }
@@ -1106,7 +1123,14 @@
       ],
       "responses": {
         "200": {
-          "description": "Starship updated"
+          "description": "Starship updated",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Starships"
+              }
+            }
+          }
         }
       }
     },
@@ -1139,10 +1163,11 @@
       "responses": {
         "200": {
           "description": "A list of vehicles",
-          "schema": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Vehicles"
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Vehicles"
+              }
             }
           }
         }
@@ -1167,7 +1192,14 @@
       ],
       "responses": {
         "201": {
-          "description": "Vehicle created"
+          "description": "Vehicle created",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Vehicles"
+              }
+            }
+          }
         }
       }
     }
@@ -1191,8 +1223,12 @@
       "responses": {
         "200": {
           "description": "Successful operation",
-          "schema": {
-            "$ref": "#/components/schemas/Vehicles"
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Vehicles"
+              }
+            }
           }
         },
         "404": {
@@ -1226,7 +1262,14 @@
       ],
       "responses": {
         "200": {
-          "description": "Vehicle updated"
+          "description": "Vehicle updated",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Vehicles"
+              }
+            }
+          }
         }
       }
     },
@@ -1246,6 +1289,38 @@
       "responses": {
         "200": {
           "description": "Vehicle deleted"
+        }
+      }
+    }
+  },
+  "/authenticate": {
+    "post": {
+      "tags": ["auth"],
+      "summary": "Authenticate user",
+      "description": "Authenticates a user and returns a JWT token",
+      "consumes": ["application/json"],
+      "produces": ["application/json"],
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "description": "User object that needs to be authenticated",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/Auth"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "User authenticated",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth"
+              }
+            }
+          }
         }
       }
     }
