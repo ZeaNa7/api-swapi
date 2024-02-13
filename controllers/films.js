@@ -96,17 +96,15 @@ export function getFilmById(req, res) {
 }
 
 export function updateFilm(req, res) {
-  films.findOneAndUpdate(
-    { id: req.params.filmid },
-    req.body,
-    { new: true, useFindAndModify: false }
-  )
-    .then((film) => {
-      res.status(200).json(film);
-    })
-    .catch((error) => {
-      res.status(500).send(error);
-    });
+  films.updateMany({ pk: req.params.filmid }, { $set: req.body }).then((film) => {
+    res.status(200).json(film);
+    }
+    ).catch((err) => {
+        res.status(500).json({
+            error: err
+        });
+    }
+    );
 }
 
 

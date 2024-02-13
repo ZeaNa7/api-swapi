@@ -1,7 +1,6 @@
 import cors from 'cors';
 import express, { json, urlencoded } from 'express';
 import { connect } from 'mongoose';
-
 import { config } from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json' assert { type: "json" };
@@ -32,6 +31,9 @@ app.use('/api/starships', starshipsRoutes);
 app.use('/api/vehicles', vehiclesRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
+// Setting up database connection
 const PORT = process.env.PORT|| 16743;
 
 connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })

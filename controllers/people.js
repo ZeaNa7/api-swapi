@@ -37,23 +37,21 @@ export function createPeople(req, res) {
   })
   }
 
-  export function   updatePeople(req, res) {
-    people.findOneAndUpdate(
-      { _id: req.params.peopleid },
-      req.body,
-      { new: true, useFindAndModify: false },
-      (err, people) => {
-        if (err) {
-          res.status(500).send(err);
-        }
+  export function updatePeople(req, res) {
+    people.updateMany({ pk: req.params.peopleid }, { $set: req.body }).then((people) => {
         res.status(200).json(people);
-      }
-    );
+        }
+        ).catch((err) => {
+            res.status(500).json({
+                error: err
+            });
+        }
+        );
   }
 
   export function   deletePeople(req, res) {
     people.deleteOne({ pk: req.params.peopleid }).then((people) => {
-      res.status(200).json({ message: 'People successfully deleted' });
+      res.status(200).json({ message: people });
       }).catch((err) => {
           res.status(500).json({
               error: err

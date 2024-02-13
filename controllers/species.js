@@ -57,17 +57,15 @@ export function createSpecies(req, res) {
   }
 
   export function updateSpecies(req, res) {
-    species.findOneAndUpdate(
-      { _id: req.params.speciesid },
-      req.body,
-      { new: true, useFindAndModify: false },
-      (err, specie) => {
-        if (err) {
-          res.status(500).send(err);
+    species.updateMany({ pk: req.params.speciesid }, { $set: req.body }).then((species) => {
+        res.status(200).json(species);
         }
-        res.status(200).json(specie);
-      }
-    );
+        ).catch((err) => {
+            res.status(500).json({
+                error: err
+            });
+        }
+        );
   }
 
   export function deleteSpecies(req, res) {
