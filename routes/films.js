@@ -4,15 +4,16 @@ import {
   getFilmById,
   updateFilm,
   deleteFilm,
-  createNewFilm,
+  createFilm,
 } from "../controllers/films.js";
+import verifyToken from "../middleware/authentification.js";
 
 const router = express.Router();
 
-router.get("/", listAllFilms);
-router.post("/", createNewFilm);
-router.get("/:filmid", getFilmById);
-router.put("/:filmid", updateFilm);
-router.delete("/:filmid", deleteFilm);
+router.get("/", verifyToken, listAllFilms);
+router.post("/",verifyToken, createFilm);
+router.get("/:filmid",verifyToken, getFilmById);
+router.put("/:filmid",verifyToken, updateFilm);
+router.delete("/:filmid",verifyToken, deleteFilm);
 
 export default router;

@@ -69,7 +69,7 @@ export function listAllFilms(req, res) {
   })
 }
 
-export function createNewFilm(req, res) {
+export function createFilm(req, res) {
   let pk;
   films.find().sort({ pk: -1 }).limit(1).then((film) => {
     pk = film[0].pk + 1;
