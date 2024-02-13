@@ -1,12 +1,13 @@
 import { Router } from "express";
 const router = Router();
+import verifyToken from "../middleware/authentification.js";
 import { getPeople, createPeople, getPeopleById, updatePeople, deletePeople } from '../controllers/people.js';
 
-router.get("/", getPeople);
-router.get("/:peopleid", getPeopleById);
-router.post("/", createPeople);
-router.put("/:peopleid", updatePeople);
-router.delete("/:peopleid", deletePeople);
+router.get("/",verifyToken, getPeople);
+router.get("/:peopleid",verifyToken, getPeopleById);
+router.post("/",verifyToken, createPeople);
+router.put("/:peopleid",verifyToken, updatePeople);
+router.delete("/:peopleid",verifyToken, deletePeople);
 
 export default router;
 

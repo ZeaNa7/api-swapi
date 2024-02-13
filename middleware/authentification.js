@@ -7,7 +7,7 @@ function verifyToken(req, res, next) {
   
     jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
       if (err) {
-        return res.sendStatus(401)
+        return res.sendStatus(418)
       }
       req.user = user;
       next();
