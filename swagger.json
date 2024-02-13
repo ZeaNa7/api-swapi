@@ -1,1329 +1,1330 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Star Wars API",
-    "description": "This is",
-    "version": "1.0.0"
-  },
-  "security": [{
-    "apiKey": []
-  }],
-  "servers": [{
-    "url": "/api"
-  }],
-  "components": {
-    "securitySchemes": {
-      "apiKey": {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header"
-      }
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Star Wars API",
+        "description": "This is",
+        "version": "1.0.0"
     },
-  "schemas": {
-  "Film": {
-    "type": "object",
-    "properties": {
-      "model": {
-        "type": "string"
-      },
-      "pk": {
-        "type": "integer",
-        "format": "int64"
-      },
-      "field": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string",
-            "description": "The title of this film."
-          },
-          "episode_id": {
-            "type": "integer",
-            "format": "int64",
-            "description": "The episode number of this film."
-          },
-          "opening_crawl": {
-            "type": "string",
-            "description": "The opening crawl text at the beginning of this film."
-          },
-          "director": {
-            "type": "string"
-          },
-          "producer": {
-            "type": "string"
-          },
-          "release_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "characters": {
-            "type": "array",
-            "items": {
-              "type": "string"
+    "security": [
+        {
+            "apiKey": []
+        }
+    ],
+    "servers": [
+        {
+            "url": "/api"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "apiKey": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
             }
-          },
-          "planets": {
-            "type": "array",
-            "items": {
-              "type": "string"
+        },
+        "schemas": {
+            "Film": {
+                "type": "object",
+                "properties": {
+                    "model": {
+                        "type": "string"
+                    },
+                    "pk": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "field": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string",
+                                "description": "The title of this film."
+                            },
+                            "episode_id": {
+                                "type": "integer",
+                                "format": "int64",
+                                "description": "The episode number of this film."
+                            },
+                            "opening_crawl": {
+                                "type": "string",
+                                "description": "The opening crawl text at the beginning of this film."
+                            },
+                            "director": {
+                                "type": "string"
+                            },
+                            "producer": {
+                                "type": "string"
+                            },
+                            "release_date": {
+                                "type": "string",
+                                "format": "date"
+                            },
+                            "characters": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "planets": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "starships": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "vehicles": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "species": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "People": {
+                "type": "object",
+                "properties": {
+                    "models": {
+                        "type": "string"
+                    },
+                    "pk": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "field": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "The name of this person."
+                            },
+                            "height": {
+                                "type": "string",
+                                "description": "The height of this person in meters."
+                            },
+                            "mass": {
+                                "type": "string",
+                                "description": "The mass of this person in kilograms."
+                            },
+                            "hair_color": {
+                                "type": "string",
+                                "description": "The hair color of this person."
+                            },
+                            "skin_color": {
+                                "type": "string",
+                                "description": "The skin color of this person."
+                            },
+                            "eye_color": {
+                                "type": "string",
+                                "description": "The eye color of this person."
+                            },
+                            "birth_year": {
+                                "type": "string",
+                                "description": "The birth year of this person. BBY (Before the Battle of Yavin) or ABY (After the Battle of Yavin)."
+                            },
+                            "gender": {
+                                "type": "string",
+                                "description": "The gender of this person (if known)."
+                            },
+                            "homeworld": {
+                                "type": "string",
+                                "description": "The url of the planet resource that this person was born on."
+                            },
+                            "films": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "An array of urls of film resources that this person has been in."
+                            },
+                            "species": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "The url of the species resource that this person is."
+                            },
+                            "vehicles": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "An array of vehicle resources that this person has piloted"
+                            },
+                            "starships": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "An array of starship resources that this person has piloted"
+                            },
+                            "url": {
+                                "type": "string",
+                                "description": "The url of this resource"
+                            },
+                            "created": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The ISO 8601 date format of the time that this resource was created."
+                            },
+                            "edited": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The ISO 8601 date format of the time that this resource was edited."
+                            }
+                        }
+                    }
+                }
+            },
+            "Planets": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this planet."
+                    },
+                    "diameter": {
+                        "type": "string",
+                        "description": "The diameter of this planet in kilometers."
+                    },
+                    "rotation_period": {
+                        "type": "string",
+                        "description": "The number of standard hours it takes for this planet to complete a single rotation on its axis."
+                    },
+                    "orbital_period": {
+                        "type": "string",
+                        "description": "The number of standard days it takes for this planet to complete a single orbit of its local star."
+                    },
+                    "gravity": {
+                        "type": "string",
+                        "description": "A number denoting the gravity of this planet. Where 1 is normal."
+                    },
+                    "population": {
+                        "type": "string",
+                        "description": "The average population of sentient beings inhabiting this planet."
+                    },
+                    "climate": {
+                        "type": "string",
+                        "description": "The climate of this planet. Comma-separated if diverse."
+                    },
+                    "terrain": {
+                        "type": "string",
+                        "description": "The terrain of this planet. Comma-separated if diverse."
+                    },
+                    "surface_water": {
+                        "type": "string",
+                        "description": "The percentage of the planet surface that is naturally occurring water or bodies of water."
+                    },
+                    "films": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array of Film URL Resources that this planet has appeared in."
+                    },
+                    "residents": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array of People URL Resources that live on this planet."
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The hypermedia URL of this resource."
+                    },
+                    "created": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The ISO 8601 date format of the time that this resource was created."
+                    },
+                    "edited": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The ISO 8601 date format of the time that this resource was edited."
+                    }
+                }
+            },
+            "Species": {
+                "type": "object",
+                "properties": {
+                    "model": {
+                        "type": "string"
+                    },
+                    "pk": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "field": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "The name of this species."
+                            },
+                            "classification": {
+                                "type": "string",
+                                "description": "The classification of this species."
+                            },
+                            "designation": {
+                                "type": "string",
+                                "description": "The designation of this species."
+                            },
+                            "average_height": {
+                                "type": "string",
+                                "description": "The average height of this species in centimeters."
+                            },
+                            "average_lifespan": {
+                                "type": "string",
+                                "description": "The average lifespan of this species in years."
+                            },
+                            "hair_colors": {
+                                "type": "string",
+                                "description": "A comma-separated string of common hair colors for this species, none if this species does not typically have hair."
+                            },
+                            "skin_colors": {
+                                "type": "string",
+                                "description": "A comma-separated string of common skin colors for this species, none if this species does not typically have skin."
+                            },
+                            "eye_colors": {
+                                "type": "string",
+                                "description": "A comma-separated string of common eye colors for this species, none if this species does not typically have eyes."
+                            },
+                            "homeworld": {
+                                "type": "string",
+                                "description": "The URL of a planet resource, a planet that this species originates from."
+                            },
+                            "language": {
+                                "type": "string",
+                                "description": "The language commonly spoken by this species."
+                            },
+                            "people": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "An array of People URL Resources that are a part of this species."
+                            },
+                            "films": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "An array of Film URL Resources that this species has appeared in."
+                            },
+                            "url": {
+                                "type": "string",
+                                "description": "The hypermedia URL of this resource."
+                            },
+                            "created": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The ISO 8601 date format of the time that this resource was created."
+                            },
+                            "edited": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The ISO 8601 date format of the time that this resource was edited."
+                            }
+                        }
+                    }
+                }
+            },
+            "Starships": {
+                "type": "object",
+                "properties": {
+                    "model": {
+                        "type": "string"
+                    },
+                    "pk": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "field": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "The name of this starship. The common name, such as Death Star."
+                            },
+                            "model": {
+                                "type": "string",
+                                "description": "The model or official name of this starship. Such as T-65 X-wing or DS-1 Orbital Battle Station."
+                            },
+                            "starship_class": {
+                                "type": "string",
+                                "description": "The class of this starship, such as Starfighter or Deep Space Mobile Battlestation."
+                            },
+                            "manufacturer": {
+                                "type": "string",
+                                "description": "The manufacturer of this starship. Comma separated if more than one."
+                            },
+                            "cost_in_credits": {
+                                "type": "string",
+                                "description": "The cost of this starship new, in galactic credits."
+                            },
+                            "length": {
+                                "type": "string",
+                                "description": "The length of this starship in meters."
+                            },
+                            "crew": {
+                                "type": "string",
+                                "description": "The number of personnel needed to run or pilot this starship."
+                            },
+                            "passengers": {
+                                "type": "string",
+                                "description": "The number of non-essential people this starship can transport."
+                            },
+                            "max_atmosphering_speed": {
+                                "type": "string",
+                                "description": "The maximum speed of this starship in atmosphere. n/a if this starship is incapable of atmosphering flight."
+                            },
+                            "hyperdrive_rating": {
+                                "type": "string",
+                                "description": "The class of this starships hyperdrive."
+                            },
+                            "MGLT": {
+                                "type": "string",
+                                "description": "The Maximum number of Megalights this starship can travel in a standard hour. A Megalight is a standard unit of distance and has never been defined before within the Star Wars universe. This figure is only really useful for measuring the difference in speed of starships. We can assume it is similar to AU, the distance between our Sun (Sol) and Earth."
+                            },
+                            "cargo_capacity": {
+                                "type": "string",
+                                "description": "The maximum number of kilograms that this starship can transport."
+                            },
+                            "consumables": {
+                                "type": "string",
+                                "description": "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply."
+                            },
+                            "films": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "An array of Film URL Resources that this starship has appeared in."
+                            },
+                            "pilots": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "An array of People URL Resources that this starship has been piloted by."
+                            },
+                            "url": {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "The hypermedia URL of this resource."
+                            },
+                            "created": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The ISO 8601 date format of the time that this resource was created."
+                            },
+                            "edited": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The ISO 8601 date format of the time that this resource was edited."
+                            }
+                        }
+                    }
+                }
+            },
+            "Vehicles": {
+                "type": "object",
+                "properties": {
+                    "model": {
+                        "type": "string"
+                    },
+                    "pk": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "field": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "The name of this vehicle. The common name, such as Sand Crawler."
+                            },
+                            "model": {
+                                "type": "string",
+                                "description": "The model or official name of this vehicle. Such as All Terrain Attack Transport."
+                            },
+                            "vehicle_class": {
+                                "type": "string",
+                                "description": "The class of this vehicle, such as Wheeled."
+                            },
+                            "manufacturer": {
+                                "type": "string",
+                                "description": "The manufacturer of this vehicle. Comma separated if more than one."
+                            },
+                            "cost_in_credits": {
+                                "type": "string",
+                                "description": "The cost of this vehicle new, in galactic credits."
+                            },
+                            "length": {
+                                "type": "string",
+                                "description": "The length of this vehicle in meters."
+                            },
+                            "crew": {
+                                "type": "string",
+                                "description": "The number of personnel needed to run or pilot this vehicle."
+                            },
+                            "passengers": {
+                                "type": "string",
+                                "description": "The number of non-essential people this vehicle can transport."
+                            },
+                            "max_atmosphering_speed": {
+                                "type": "string",
+                                "description": "The maximum speed of this vehicle in atmosphere."
+                            },
+                            "cargo_capacity": {
+                                "type": "string",
+                                "description": "The maximum number of kilograms that this vehicle can transport."
+                            },
+                            "consumables": {
+                                "type": "string",
+                                "description": "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply."
+                            },
+                            "films": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "An array of Film URL Resources that this vehicle has appeared in."
+                            },
+                            "pilots": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "An array of People URL Resources that this vehicle has been piloted by."
+                            },
+                            "url": {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "The hypermedia URL of this resource."
+                            },
+                            "created": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The ISO 8601 date format of the time that this resource was created."
+                            },
+                            "edited": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The ISO 8601 date format of the time that this resource was edited."
+                            }
+                        }
+                    }
+                }
+            },
+            "Auth": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "description": "The username of the user."
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The JWT token generated for the user."
+                    }
+                }
             }
-          },
-          "starships": {
-            "type": "array",
-            "items": {
-              "type": "string"
+        }
+    },
+    "paths": {
+        "/films": {
+            "get": {
+                "tags": ["films"],
+                "summary": "List all films",
+                "description": "Returns all films from the database",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "A list of films",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Film"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["films"],
+                "summary": "Create a new film",
+                "description": "Adds a new film to the database",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Film object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Film"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Film created"
+                    }
+                }
             }
-          },
-          "vehicles": {
-            "type": "array",
-            "items": {
-              "type": "string"
+        },
+        "/films/{filmid}": {
+            "get": {
+                "tags": ["films"],
+                "summary": "Find film by ID",
+                "description": "Returns a single film",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "filmid",
+                        "in": "path",
+                        "description": "ID of film to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/components/schemas/Film"
+                        }
+                    },
+                    "404": {
+                        "description": "Film not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["films"],
+                "summary": "Update an existing film",
+                "description": "Updates a film in the database with form data",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "filmid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Film object that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Film"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Film updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["films"],
+                "summary": "Deletes a film",
+                "description": "Deletes an existing film from the database",
+                "parameters": [
+                    {
+                        "name": "filmid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Film deleted"
+                    }
+                }
             }
-          },
-          "species": {
-            "type": "array",
-            "items": {
-              "type": "string"
+        },
+        "/people": {
+            "get": {
+                "tags": ["people"],
+                "summary": "List all people",
+                "description": "Returns all people from the database",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "A list of people",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/People"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["people"],
+                "summary": "Create a new person",
+                "description": "Adds a new person to the database",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Person object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Person created"
+                    }
+                }
             }
-          }
-        }
-      }
-    }
-  },
-"People": {
-  "type": "object",
-  "properties": {
-    "models": {
-      "type": "string"
-    },
-    "pk": {
-      "type": "integer",
-      "format": "int64"
-    },
-    "field": {
-      "type": "object",
-      "properties":{
-        "name": {
-          "type": "string",
-          "description": "The name of this person."
         },
-        "height": {
-          "type": "string",
-          "description": "The height of this person in meters."
-        },
-        "mass": {
-          "type": "string",
-          "description": "The mass of this person in kilograms."
-        },
-        "hair_color": {
-          "type": "string",
-          "description": "The hair color of this person."
-        },
-        "skin_color": {
-          "type": "string",
-          "description": "The skin color of this person."
-        },
-        "eye_color": {
-          "type": "string",
-          "description": "The eye color of this person."
-        },
-        "birth_year": {
-          "type": "string",
-          "description": "The birth year of this person. BBY (Before the Battle of Yavin) or ABY (After the Battle of Yavin)."
-        },
-        "gender": {
-          "type": "string",
-          "description": "The gender of this person (if known)."
-        },
-        "homeworld": {
-          "type": "string",
-          "description": "The url of the planet resource that this person was born on."
-        },
-        "films": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of urls of film resources that this person has been in."
-        },
-        "species": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The url of the species resource that this person is."
-        },
-        "vehicles": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of vehicle resources that this person has piloted"
-        },
-        "starships": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of starship resources that this person has piloted"
-        },
-        "url": {
-          "type": "string",
-          "description": "The url of this resource"
-        },
-        "created": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The ISO 8601 date format of the time that this resource was created."
-        },
-        "edited": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The ISO 8601 date format of the time that this resource was edited."
-        }
-  }
-  }
-}
-},
-"Planets": {
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "description": "The name of this planet."
-    },
-    "diameter": {
-      "type": "string",
-      "description": "The diameter of this planet in kilometers."
-    },
-    "rotation_period": {
-      "type": "string",
-      "description": "The number of standard hours it takes for this planet to complete a single rotation on its axis."
-    },
-    "orbital_period": {
-      "type": "string",
-      "description": "The number of standard days it takes for this planet to complete a single orbit of its local star."
-    },
-    "gravity": {
-      "type": "string",
-      "description": "A number denoting the gravity of this planet. Where 1 is normal."
-    },
-    "population": {
-      "type": "string",
-      "description": "The average population of sentient beings inhabiting this planet."
-    },
-    "climate": {
-      "type": "string",
-      "description": "The climate of this planet. Comma-separated if diverse."
-    },
-    "terrain": {
-      "type": "string",
-      "description": "The terrain of this planet. Comma-separated if diverse."
-    },
-    "surface_water": {
-      "type": "string",
-      "description": "The percentage of the planet surface that is naturally occurring water or bodies of water."
-    },
-    "films": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "description": "An array of Film URL Resources that this planet has appeared in."
-    },
-    "residents": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "description": "An array of People URL Resources that live on this planet."
-    },
-    "url": {
-      "type": "string",
-      "description": "The hypermedia URL of this resource."
-    },
-    "created": {
-      "type": "string",
-      "format": "date-time",
-      "description": "The ISO 8601 date format of the time that this resource was created."
-    },
-    "edited": {
-      "type": "string",
-      "format": "date-time",
-      "description": "The ISO 8601 date format of the time that this resource was edited."
-    }
-  }
-},
-"Species": {
-  "type": "object",
-  "properties": {
-    "model": {
-      "type": "string"
-    },
-    "pk": {
-      "type": "integer",
-      "format": "int64"
-    },
-    "field": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name of this species."
-        },
-        "classification": {
-          "type": "string",
-          "description": "The classification of this species."
-        },
-        "designation": {
-          "type": "string",
-          "description": "The designation of this species."
-        },
-        "average_height": {
-          "type": "string",
-          "description": "The average height of this species in centimeters."
-        },
-        "average_lifespan": {
-          "type": "string",
-          "description": "The average lifespan of this species in years."
-        },
-        "hair_colors": {
-          "type": "string",
-          "description": "A comma-separated string of common hair colors for this species, none if this species does not typically have hair."
-        },
-        "skin_colors": {
-          "type": "string",
-          "description": "A comma-separated string of common skin colors for this species, none if this species does not typically have skin."
-        },
-        "eye_colors": {
-          "type": "string",
-          "description": "A comma-separated string of common eye colors for this species, none if this species does not typically have eyes."
-        },
-        "homeworld": {
-          "type": "string",
-          "description": "The URL of a planet resource, a planet that this species originates from."
-        },
-        "language": {
-          "type": "string",
-          "description": "The language commonly spoken by this species."
-        },
-        "people": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of People URL Resources that are a part of this species."
-        },
-        "films": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of Film URL Resources that this species has appeared in."
-        },
-        "url": {
-          "type": "string",
-          "description": "The hypermedia URL of this resource."
-        },
-        "created": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The ISO 8601 date format of the time that this resource was created."
-        },
-        "edited": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The ISO 8601 date format of the time that this resource was edited."
-        }
-      }
-    }
-  }
-},
-"Starships": {
-  "type": "object",
-  "properties": {
-    "model": {
-      "type": "string"
-    },
-    "pk": {
-      "type": "integer",
-      "format": "int64"
-    },
-    "field": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name of this starship. The common name, such as Death Star."
-        },
-        "model": {
-          "type": "string",
-          "description": "The model or official name of this starship. Such as T-65 X-wing or DS-1 Orbital Battle Station."
-        },
-        "starship_class": {
-          "type": "string",
-          "description": "The class of this starship, such as Starfighter or Deep Space Mobile Battlestation."
-        },
-        "manufacturer": {
-          "type": "string",
-          "description": "The manufacturer of this starship. Comma separated if more than one."
-        },
-        "cost_in_credits": {
-          "type": "string",
-          "description": "The cost of this starship new, in galactic credits."
-        },
-        "length": {
-          "type": "string",
-          "description": "The length of this starship in meters."
-        },
-        "crew": {
-          "type": "string",
-          "description": "The number of personnel needed to run or pilot this starship."
-        },
-        "passengers": {
-          "type": "string",
-          "description": "The number of non-essential people this starship can transport."
-        },
-        "max_atmosphering_speed": {
-          "type": "string",
-          "description": "The maximum speed of this starship in atmosphere. n/a if this starship is incapable of atmosphering flight."
-        },
-        "hyperdrive_rating": {
-          "type": "string",
-          "description": "The class of this starships hyperdrive."
-        },
-        "MGLT": {
-          "type": "string",
-          "description": "The Maximum number of Megalights this starship can travel in a standard hour. A Megalight is a standard unit of distance and has never been defined before within the Star Wars universe. This figure is only really useful for measuring the difference in speed of starships. We can assume it is similar to AU, the distance between our Sun (Sol) and Earth."
-        },
-        "cargo_capacity": {
-          "type": "string",
-          "description": "The maximum number of kilograms that this starship can transport."
-        },
-        "consumables": {
-          "type": "string",
-          "description": "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply."
-        },
-        "films": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of Film URL Resources that this starship has appeared in."
-        },
-        "pilots": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of People URL Resources that this starship has been piloted by."
-        },
-        "url": {
-          "type": "string",
-          "format": "uri",
-          "description": "The hypermedia URL of this resource."
-        },
-        "created": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The ISO 8601 date format of the time that this resource was created."
-        },
-        "edited": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The ISO 8601 date format of the time that this resource was edited."
-        }
-      }
-    }
-  }
-},
-"Vehicles": {
-  "type": "object",
-  "properties": {
-    "model": {
-      "type": "string"
-    },
-    "pk": {
-      "type": "integer",
-      "format": "int64"
-    },
-    "field": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name of this vehicle. The common name, such as Sand Crawler."
-        },
-        "model": {
-          "type": "string",
-          "description": "The model or official name of this vehicle. Such as All Terrain Attack Transport."
-        },
-        "vehicle_class": {
-          "type": "string",
-          "description": "The class of this vehicle, such as Wheeled."
-        },
-        "manufacturer": {
-          "type": "string",
-          "description": "The manufacturer of this vehicle. Comma separated if more than one."
-        },
-        "cost_in_credits": {
-          "type": "string",
-          "description": "The cost of this vehicle new, in galactic credits."
-        },
-        "length": {
-          "type": "string",
-          "description": "The length of this vehicle in meters."
-        },
-        "crew": {
-          "type": "string",
-          "description": "The number of personnel needed to run or pilot this vehicle."
-        },
-        "passengers": {
-          "type": "string",
-          "description": "The number of non-essential people this vehicle can transport."
-        },
-        "max_atmosphering_speed": {
-          "type": "string",
-          "description": "The maximum speed of this vehicle in atmosphere."
-        },
-        "cargo_capacity": {
-          "type": "string",
-          "description": "The maximum number of kilograms that this vehicle can transport."
-        },
-        "consumables": {
-          "type": "string",
-          "description": "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply."
-        },
-        "films": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of Film URL Resources that this vehicle has appeared in."
-        },
-        "pilots": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "An array of People URL Resources that this vehicle has been piloted by."
-        },
-        "url": {
-          "type": "string",
-          "format": "uri",
-          "description": "The hypermedia URL of this resource."
-        },
-        "created": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The ISO 8601 date format of the time that this resource was created."
-        },
-        "edited": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The ISO 8601 date format of the time that this resource was edited."
-        }
-      }
-    }
-  }
-},
-"Auth": {
-  "type": "object",
-  "properties": {
-    "username": {
-      "type": "string",
-      "description": "The username of the user."
-    },
-    "token": {
-      "type": "string",
-      "description": "The JWT token generated for the user."
-    }
-  }
-}
-
-}
-
-
-},
-"paths": {
-  "/films": {
-    "get": {
-      "tags": ["films"],
-      "summary": "List all films",
-      "description": "Returns all films from the database",
-      "produces": ["application/json"],
-      "responses": {
-        "200": {
-          "description": "A list of films",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Film"
-              }
+        "/people/{peopleid}": {
+            "get": {
+                "tags": ["people"],
+                "summary": "Find person by ID",
+                "description": "Returns a single person",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "peopleid",
+                        "in": "path",
+                        "description": "ID of person to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    },
+                    "404": {
+                        "description": "Person not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["people"],
+                "summary": "Update an existing person",
+                "description": "Updates a person in the database with form data",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "peopleid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Person object that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/People"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Person updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["people"],
+                "summary": "Deletes a person",
+                "description": "Deletes an existing person from the database",
+                "parameters": [
+                    {
+                        "name": "peopleid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Person deleted"
+                    }
+                }
             }
-          }
-        }
-      }
-    },
-    "post": {
-      "tags": ["films"],
-      "summary": "Create a new film",
-      "description": "Adds a new film to the database",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Film object that needs to be added to the store",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Film"
-          }
-        }
-      ],
-      "responses": {
-        "201": {
-          "description": "Film created"
-        }
-      }
-    }
-  },
-  "/films/{filmid}": {
-    "get": {
-      "tags": ["films"],
-      "summary": "Find film by ID",
-      "description": "Returns a single film",
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "filmid",
-          "in": "path",
-          "description": "ID of film to return",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Successful operation",
-          "schema": {
-            "$ref": "#/components/schemas/Film"
-          }
         },
-        "404": {
-          "description": "Film not found"
-        }
-      }
-    },
-    "put": {
-      "tags": ["films"],
-      "summary": "Update an existing film",
-      "description": "Updates a film in the database with form data",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "filmid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        },
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Film object that needs to be updated",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Film"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Film updated"
-        }
-      }
-    },
-    "delete": {
-      "tags": ["films"],
-      "summary": "Deletes a film",
-      "description": "Deletes an existing film from the database",
-      "parameters": [
-        {
-          "name": "filmid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Film deleted"
-        }
-      }
-    }
-  },
-  "/people": {
-    "get": {
-      "tags": ["people"],
-      "summary": "List all people",
-      "description": "Returns all people from the database",
-      "produces": ["application/json"],
-      "responses": {
-        "200": {
-          "description": "A list of people",
-          "schema": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/People"
+        "/planets": {
+            "get": {
+                "tags": ["planets"],
+                "summary": "List all planets",
+                "description": "Returns all planets from the database",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "A list of planets",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Planets"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["planets"],
+                "summary": "Create a new planet",
+                "description": "Adds a new planet to the database",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Planet object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Planets"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Planet created"
+                    }
+                }
             }
-          }
-        }
-      }
-    },
-    "post": {
-      "tags": ["people"],
-      "summary": "Create a new person",
-      "description": "Adds a new person to the database",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Person object that needs to be added to the store",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/People"
-          }
-        }
-      ],
-      "responses": {
-        "201": {
-          "description": "Person created"
-        }
-      }
-    }
-  },
-  "/people/{peopleid}": {
-    "get": {
-      "tags": ["people"],
-      "summary": "Find person by ID",
-      "description": "Returns a single person",
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "peopleid",
-          "in": "path",
-          "description": "ID of person to return",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Successful operation",
-          "schema": {
-            "$ref": "#/components/schemas/People"
-          }
         },
-        "404": {
-          "description": "Person not found"
-        }
-      }
-    },
-    "put": {
-      "tags": ["people"],
-      "summary": "Update an existing person",
-      "description": "Updates a person in the database with form data",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "peopleid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        },
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Person object that needs to be updated",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/People"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Person updated"
-        }
-      }
-    },
-    "delete": {
-      "tags": ["people"],
-      "summary": "Deletes a person",
-      "description": "Deletes an existing person from the database",
-      "parameters": [
-        {
-          "name": "peopleid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Person deleted"
-        }
-      }
-    }
-  },
-  "/planets": {
-    "get": {
-      "tags": ["planets"],
-      "summary": "List all planets",
-      "description": "Returns all planets from the database",
-      "produces": ["application/json"],
-      "responses": {
-        "200": {
-          "description": "A list of planets",
-          "schema": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Planets"
+        "/planets/{planetid}": {
+            "get": {
+                "tags": ["planets"],
+                "summary": "Find planet by ID",
+                "description": "Returns a single planet",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "planetid",
+                        "in": "path",
+                        "description": "ID of planet to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/components/schemas/Planets"
+                        }
+                    },
+                    "404": {
+                        "description": "Planet not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["planets"],
+                "summary": "Update an existing planet",
+                "description": "Updates a planet in the database with form data",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "planetid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Planet object that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Planets"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Planet updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["planets"],
+                "summary": "Deletes a planet",
+                "description": "Deletes an existing planet from the database",
+                "parameters": [
+                    {
+                        "name": "planetid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Planet deleted"
+                    }
+                }
             }
-          }
-        }
-      }
-    },
-    "post": {
-      "tags": ["planets"],
-      "summary": "Create a new planet",
-      "description": "Adds a new planet to the database",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Planet object that needs to be added to the store",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Planets"
-          }
-        }
-      ],
-      "responses": {
-        "201": {
-          "description": "Planet created"
-        }
-      }
-    }
-  },
-  "/planets/{planetid}": {
-    "get": {
-      "tags": ["planets"],
-      "summary": "Find planet by ID",
-      "description": "Returns a single planet",
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "planetid",
-          "in": "path",
-          "description": "ID of planet to return",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Successful operation",
-          "schema": {
-            "$ref": "#/components/schemas/Planets"
-          }
         },
-        "404": {
-          "description": "Planet not found"
-        }
-      }
-    },
-    "put": {
-      "tags": ["planets"],
-      "summary": "Update an existing planet",
-      "description": "Updates a planet in the database with form data",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "planetid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
+        "/species": {
+            "get": {
+                "tags": ["species"],
+                "summary": "List all species",
+                "description": "Returns all species from the database",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "A list of species",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Species"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["species"],
+                "summary": "Create a new species",
+                "description": "Adds a new species to the database",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Species object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Species"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Species created"
+                    }
+                }
+            }
         },
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Planet object that needs to be updated",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Planets"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Planet updated"
-        }
-      }
-    },
-    "delete": {
-      "tags": ["planets"],
-      "summary": "Deletes a planet",
-      "description": "Deletes an existing planet from the database",
-      "parameters": [
-        {
-          "name": "planetid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Planet deleted"
-        }
-      }
-    }
-  },
-  "/species": {
-    "get": {
-      "tags": ["species"],
-      "summary": "List all species",
-      "description": "Returns all species from the database",
-      "produces": ["application/json"],
-      "responses": {
-        "200": {
-          "description": "A list of species",
-          "schema": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Species"
+        "/species/{speciesid}": {
+            "get": {
+                "tags": ["species"],
+                "summary": "Find species by ID",
+                "description": "Returns a single species",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "speciesid",
+                        "in": "path",
+                        "description": "ID of species to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/components/schemas/Species"
+                        }
+                    },
+                    "404": {
+                        "description": "Species not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["species"],
+                "summary": "Update an existing species",
+                "description": "Updates a species in the database with form data",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "speciesid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Species object that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Species"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Species updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["species"],
+                "summary": "Deletes a species",
+                "description": "Deletes an existing species from the database",
+                "parameters": [
+                    {
+                        "name": "speciesid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Species deleted"
+                    }
+                }
             }
-          }
-        }
-      }
-    },
-    "post": {
-      "tags": ["species"],
-      "summary": "Create a new species",
-      "description": "Adds a new species to the database",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Species object that needs to be added to the store",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Species"
-          }
-        }
-      ],
-      "responses": {
-        "201": {
-          "description": "Species created"
-        }
-      }
-    }
-  },
-  "/species/{speciesid}": {
-    "get": {
-      "tags": ["species"],
-      "summary": "Find species by ID",
-      "description": "Returns a single species",
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "speciesid",
-          "in": "path",
-          "description": "ID of species to return",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Successful operation",
-          "schema": {
-            "$ref": "#/components/schemas/Species"
-          }
         },
-        "404": {
-          "description": "Species not found"
-        }
-      }
-    },
-    "put": {
-      "tags": ["species"],
-      "summary": "Update an existing species",
-      "description": "Updates a species in the database with form data",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "speciesid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
+        "/starships": {
+            "get": {
+                "tags": ["starships"],
+                "summary": "List all starships",
+                "description": "Returns all starships from the database",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "A list of starships",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/schemas/Starships"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["starships"],
+                "summary": "Create a new starship",
+                "description": "Adds a new starship to the database",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Starship object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Starships"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Starship created"
+                    }
+                }
+            }
         },
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Species object that needs to be updated",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Species"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Species updated"
-        }
-      }
-    },
-    "delete": {
-      "tags": ["species"],
-      "summary": "Deletes a species",
-      "description": "Deletes an existing species from the database",
-      "parameters": [
-        {
-          "name": "speciesid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Species deleted"
-        }
-      }
-    }
-  },
-  "/starships": {
-    "get": {
-      "tags": ["starships"],
-      "summary": "List all starships",
-      "description": "Returns all starships from the database",
-      "produces": ["application/json"],
-      "responses": {
-        "200": {
-          "description": "A list of starships",
-          "schema": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Starships"
+        "/starships/{starshipid}": {
+            "get": {
+                "tags": ["starships"],
+                "summary": "Find starship by ID",
+                "description": "Returns a single starship",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "starshipid",
+                        "in": "path",
+                        "description": "ID of starship to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/components/schemas/Starships"
+                        }
+                    },
+                    "404": {
+                        "description": "Starship not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["starships"],
+                "summary": "Update an existing starship",
+                "description": "Updates a starship in the database with form data",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "starshipid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Starship object that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Starships"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Starship updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Starships"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["starships"],
+                "summary": "Deletes a starship",
+                "description": "Deletes an existing starship from the database",
+                "parameters": [
+                    {
+                        "name": "starshipid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Starship deleted"
+                    }
+                }
             }
-          }
-        }
-      }
-    },
-    "post": {
-      "tags": ["starships"],
-      "summary": "Create a new starship",
-      "description": "Adds a new starship to the database",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Starship object that needs to be added to the store",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Starships"
-          }
-        }
-      ],
-      "responses": {
-        "201": {
-          "description": "Starship created"
-        }
-      }
-    }
-  },
-  "/starships/{starshipid}": {
-    "get": {
-      "tags": ["starships"],
-      "summary": "Find starship by ID",
-      "description": "Returns a single starship",
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "starshipid",
-          "in": "path",
-          "description": "ID of starship to return",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Successful operation",
-          "schema": {
-            "$ref": "#/components/schemas/Starships"
-          }
         },
-        "404": {
-          "description": "Starship not found"
-        }
-      }
-    },
-    "put": {
-      "tags": ["starships"],
-      "summary": "Update an existing starship",
-      "description": "Updates a starship in the database with form data",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "starshipid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
+        "/vehicles": {
+            "get": {
+                "tags": ["vehicles"],
+                "summary": "List all vehicles",
+                "description": "Returns all vehicles from the database",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "A list of vehicles",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vehicles"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["vehicles"],
+                "summary": "Create a new vehicle",
+                "description": "Adds a new vehicle to the database",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Vehicle object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Vehicles"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Vehicle created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vehicles"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Starship object that needs to be updated",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Starships"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Starship updated",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Starships"
-              }
+        "/vehicles/{vehicleid}": {
+            "get": {
+                "tags": ["vehicles"],
+                "summary": "Find vehicle by ID",
+                "description": "Returns a single vehicle",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "vehicleid",
+                        "in": "path",
+                        "description": "ID of vehicle to return",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vehicles"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Vehicle not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["vehicles"],
+                "summary": "Update an existing vehicle",
+                "description": "Updates a vehicle in the database with form data",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "vehicleid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Vehicle object that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Vehicles"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Vehicle updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vehicles"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["vehicles"],
+                "summary": "Deletes a vehicle",
+                "description": "Deletes an existing vehicle from the database",
+                "parameters": [
+                    {
+                        "name": "vehicleid",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Vehicle deleted"
+                    }
+                }
             }
-          }
-        }
-      }
-    },
-    "delete": {
-      "tags": ["starships"],
-      "summary": "Deletes a starship",
-      "description": "Deletes an existing starship from the database",
-      "parameters": [
-        {
-          "name": "starshipid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Starship deleted"
-        }
-      }
-    }
-  },
-  "/vehicles": {
-    "get": {
-      "tags": ["vehicles"],
-      "summary": "List all vehicles",
-      "description": "Returns all vehicles from the database",
-      "produces": ["application/json"],
-      "responses": {
-        "200": {
-          "description": "A list of vehicles",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Vehicles"
-              }
-            }
-          }
-        }
-      }
-    },
-    "post": {
-      "tags": ["vehicles"],
-      "summary": "Create a new vehicle",
-      "description": "Adds a new vehicle to the database",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Vehicle object that needs to be added to the store",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Vehicles"
-          }
-        }
-      ],
-      "responses": {
-        "201": {
-          "description": "Vehicle created",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Vehicles"
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/vehicles/{vehicleid}": {
-    "get": {
-      "tags": ["vehicles"],
-      "summary": "Find vehicle by ID",
-      "description": "Returns a single vehicle",
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "vehicleid",
-          "in": "path",
-          "description": "ID of vehicle to return",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Successful operation",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Vehicles"
-              }
-            }
-          }
         },
-        "404": {
-          "description": "Vehicle not found"
-        }
-      }
-    },
-    "put": {
-      "tags": ["vehicles"],
-      "summary": "Update an existing vehicle",
-      "description": "Updates a vehicle in the database with form data",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "name": "vehicleid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        },
-        {
-          "in": "body",
-          "name": "body",
-          "description": "Vehicle object that needs to be updated",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Vehicles"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Vehicle updated",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Vehicles"
-              }
+        "/authenticate": {
+            "post": {
+                "tags": ["auth"],
+                "summary": "Authenticate user",
+                "description": "Authenticates a user and returns a JWT token",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User object that needs to be authenticated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Auth"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User authenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Auth"
+                                }
+                            }
+                        }
+                    }
+                }
             }
-          }
         }
-      }
-    },
-    "delete": {
-      "tags": ["vehicles"],
-      "summary": "Deletes a vehicle",
-      "description": "Deletes an existing vehicle from the database",
-      "parameters": [
-        {
-          "name": "vehicleid",
-          "in": "path",
-          "required": true,
-          "type": "integer",
-          "format": "int64"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "Vehicle deleted"
-        }
-      }
     }
-  },
-  "/authenticate": {
-    "post": {
-      "tags": ["auth"],
-      "summary": "Authenticate user",
-      "description": "Authenticates a user and returns a JWT token",
-      "consumes": ["application/json"],
-      "produces": ["application/json"],
-      "parameters": [
-        {
-          "in": "body",
-          "name": "body",
-          "description": "User object that needs to be authenticated",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/Auth"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "User authenticated",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Auth"
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
 }
