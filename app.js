@@ -1,26 +1,25 @@
-import cors from 'cors';
-import express, { json, urlencoded } from 'express';
-import { connect } from 'mongoose';
-import { config } from 'dotenv';
-import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from './swagger.json' assert { type: "json" };
+import cors from 'cors'
+import express, { json, urlencoded } from 'express'
+import { connect } from 'mongoose'
+import { config } from 'dotenv'
+import swaggerUi from 'swagger-ui-express'
+import swaggerDocument from './swagger.json' assert { type: 'json' }
 
-import authRoute from './routes/auth.js';
-import filmsRoutes from './routes/films.js';
-import peopleRoutes from './routes/people.js';
-import planetsRoutes from './routes/planets.js';
-import speciesRoutes from './routes/species.js';
-import starshipsRoutes from './routes/starships.js';
-import vehiclesRoutes from './routes/vehicles.js';
-import sentry from './sentry.js';
+import authRoute from './routes/auth.js'
+import filmsRoutes from './routes/films.js'
+import peopleRoutes from './routes/people.js'
+import planetsRoutes from './routes/planets.js'
+import speciesRoutes from './routes/species.js'
+import starshipsRoutes from './routes/starships.js'
+import vehiclesRoutes from './routes/vehicles.js'
+import Sentry from './sentry.js'
 
-const app = express();
-config();
+const app = express()
+config()
 
-app.use(json());
-app.use(cors());
-app.use(urlencoded({ extended: true }));
-app.use(sentry);
+app.use(json())
+app.use(cors())
+app.use(urlencoded({ extended: true }))
 
 app.use('/api/authenticate', authRoute)
 app.use('/api/films', filmsRoutes)
@@ -32,7 +31,10 @@ app.use('/api/vehicles', vehiclesRoutes)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-// Setting up database connection
+app.use(Sentry.Handlers.requestHandler())
+app.use(Sentry.Handlers.tracingHandler())
+app.use(Sentry.Handlers.errorHandler())
+
 const PORT = process.env.PORT || 16743
 
 connect(process.env.DATABASE_URL, {
