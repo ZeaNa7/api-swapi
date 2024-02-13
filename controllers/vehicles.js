@@ -38,17 +38,15 @@ export function createVehicle(req, res) {
   }
 
   export function updateVehicle(req, res) {
-    vehicles.findOneAndUpdate(
-      { _id: req.params.vehicleid },
-      req.body,
-      { new: true, useFindAndModify: false },
-      (err, vehicle) => {
-        if (err) {
-          res.status(500).send(err);
-        }
+    vehicles.updateMany({ pk: req.params.vehicleid }, { $set: req.body }).then((vehicle) => {
         res.status(200).json(vehicle);
-      }
-    );
+        }
+        ).catch((err) => {
+            res.status(500).json({
+                error: err
+            });
+        }
+        );
   }
 
   export function deleteVehicle(req, res) {

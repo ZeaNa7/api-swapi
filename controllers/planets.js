@@ -37,21 +37,19 @@ export function createPlanet(req, res) {
   })
   }
 
-  export function   updatePlanet(req, res) {
-    planets.findOneAndUpdate(
-      { _id: req.params.planetid },
-      req.body,
-      { new: true, useFindAndModify: false },
-      (err, planet) => {
-        if (err) {
-          res.status(500).send(err);
-        }
+  export function updatePlanet(req, res) {
+    planets.updateMany({ pk: req.params.planetid }, { $set: req.body }).then((planet) => {
         res.status(200).json(planet);
-      }
-    );
+        }
+        ).catch((err) => {
+            res.status(500).json({
+                error: err
+            });
+        }
+        );
   }
-  
-  export function   deletePlanet(req, res) {
+
+  export function deletePlanet(req, res) {
     planets.deleteOne({ pk: req.params.planetid }).then((planet) => {
       res.status(200).json({ message: 'People successfully deleted' });
       }).catch((err) => {

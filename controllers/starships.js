@@ -38,20 +38,18 @@ export function createStarship(req, res) {
   }
 
   export function updateStarship(req, res) {
-    starships.findOneAndUpdate(
-      { _id: req.params.starshipid },
-      req.body,
-      { new: true, useFindAndModify: false },
-      (err, starship) => {
-        if (err) {
-          res.status(500).send(err);
-        }
+    starships.updateMany({ pk: req.params.starshipid }, { $set: req.body }).then((starship) => {
         res.status(200).json(starship);
-      }
-    );
+        }
+        ).catch((err) => {
+            res.status(500).json({
+                error: err
+            });
+        }
+        );
   }
 
-  export function   deleteStarship(req, res) {
+  export function deleteStarship(req, res) {
     starships.deleteOne({ pk: req.params.starshipid }).then((starship) => {
       res.status(200).json({ message: 'Starship successfully deleted' });
       }).catch((err) => {
