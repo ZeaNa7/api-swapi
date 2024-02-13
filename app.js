@@ -1,12 +1,10 @@
-// Importing required modules
-import { connect } from 'mongoose';
-import express, { json, urlencoded } from 'express';
 import cors from 'cors';
-// Importing routes*
+import express, { json, urlencoded } from 'express';
+import { connect } from 'mongoose';
+
 import { config } from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json' assert { type: "json" };
-config();
 
 import authRoute from './routes/auth.js';
 import filmsRoutes from './routes/films.js';
@@ -15,13 +13,15 @@ import planetsRoutes from './routes/planets.js';
 import speciesRoutes from './routes/species.js';
 import starshipsRoutes from './routes/starships.js';
 import vehiclesRoutes from './routes/vehicles.js';
+import sentry from './sentry.js';
 
-// Initializing express app
 const app = express();
+config();
 
 app.use(json());
 app.use(cors());
 app.use(urlencoded({ extended: true }));
+app.use(sentry);
 
 app.use('/api/authenticate', authRoute);
 app.use('/api/films', filmsRoutes);

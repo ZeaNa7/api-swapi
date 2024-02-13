@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org starwars --project node-express ./ && sentry-cli sourcemaps upload --org starwars --project node-express ./"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
   },
   "homepage": "https://github.com/ZeaNa7/api-swapi#readme",
   "dependencies": {
+    "@sentry/cli": "^2.28.5",
+    "@sentry/node": "^7.100.1",
+    "@sentry/profiling-node": "^7.100.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
